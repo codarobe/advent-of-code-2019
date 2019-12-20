@@ -6,9 +6,9 @@ from Day13.aoc import ArcadeGame
 if __name__ == "__main__":
     pygame.init()
     pygame.display.set_caption("AOC: Arcade Game")
-    screen = pygame.display.set_mode((640, 480))
+    screen = pygame.display.set_mode((640, 440))
     clock = pygame.time.Clock()
-    colors = numpy.array([[0, 0, 0], [255, 255, 255], [0, 0, 255], [160, 160, 160], [255, 0, 0]])
+    colors = numpy.array([[0, 0, 0], [30, 30, 30], [0, 0, 255], [160, 160, 160], [255, 0, 0]])
     arcade = ArcadeGame()
     arcade.start_game()
     score = 0
@@ -40,7 +40,7 @@ if __name__ == "__main__":
         surface = pygame.surfarray.make_surface(colors[grid_array])
         surface = pygame.transform.rotate(surface, -90)
         surface = pygame.transform.flip(surface, True, False)
-        surface = pygame.transform.scale(surface, (500, 275))  # Scaled a bit.
+        surface = pygame.transform.scale(surface, (640, 400))  # Scaled a bit.
         font = pygame.font.SysFont(None, 25)
         score_text = "Score: {}".format(score)
         if arcade.computer.is_halted:
@@ -51,7 +51,7 @@ if __name__ == "__main__":
         text = font.render(score_text, True, (255, 255, 255))
 
         screen.fill((30, 30, 30))
-        screen.blit(surface, (100, 100))
+        screen.blit(surface, (0, 20))
         screen.blit(text, (0, 0))
         pygame.display.flip()
         clock.tick(60)
